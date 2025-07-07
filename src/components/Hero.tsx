@@ -39,10 +39,10 @@ export default function Hero() {
           </h1> */}
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-center mt-40">
             <span className="block text-gray-900 dark:text-white  ">Hi 👋 I'm </span>
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mt-10 ml-16">
+            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-20 mt-10 ml-15">
             Indrajit Naskar
             </span>
-            <span className="block text-gray-700 dark:text-gray-300 mt-6 ml-12 text-xl md:text-2xl">
+            <span className="block text-gray-700 dark:text-gray-300 mt-6 ml-15 text-xl md:text-2xl">
               Full Stack Web Developer & SEO Enthusiast
             </span>
           </h1>
@@ -53,29 +53,35 @@ export default function Hero() {
             innovative design, and scalable architecture. Turning ideas into reality.
           </p> */}
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12 ml-16">
-            <button
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-2"
-            >
-              <Play className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              <span>View My Work</span>
-            </button>
-            <button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
-            >
-              <Mail className="w-5 h-5" />
-              <span>Get In Touch</span>
-            </button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+  <button
+    onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+    className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-2"
+  >
+    <Play className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+    <span>View My Work</span>
+  </button>
 
-            <a href='https://limewire.com/d/bZ9MA#wPyvm9YbPR' download target="_blank" rel="noopener noreferrer">
-              <button className="px-8 py-4 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
-                <Download className="w-5 h-5" />
-                <span>Download CV</span>
-              </button>
-            </a >
-          </div>
+  <button
+    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+    className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+  >
+    <Mail className="w-5 h-5" />
+    <span>Get In Touch</span>
+  </button>
+
+  <a
+    href="https://limewire.com/d/bZ9MA#wPyvm9YbPR"
+    download
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-8 py-4 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+  >
+    <Download className="w-5 h-5" />
+    <span>Download CV</span>
+  </a>
+</div>
+
 
           <div className="flex justify-center space-x-6 mb-12">
             <a
