@@ -1,228 +1,154 @@
-import { useState, useEffect } from 'react'
-import { ExternalLink, Github, Filter } from 'lucide-react'
-import { useInView } from 'react-intersection-observer'
-import { supabase } from '../lib/supabase'
+import React from 'react';
+import { ExternalLink, Github, Award, MessageSquare, Brain } from 'lucide-react';
 
-interface Project {
-  id: string
-  title: string
-  description: string
-  image_url: string
-  demo_url: string
-  github_url: string
-  technologies: string[]
-  featured: boolean
-}
-
-export default function Projects() {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([])
-  const [selectedFilter, setSelectedFilter] = useState('all')
-  const [loading, setLoading] = useState(true)
-  
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
-  useEffect(() => {
-    fetchProjects()
-  }, [])
-
-  useEffect(() => {
-    if (selectedFilter === 'all') {
-      setFilteredProjects(projects)
-    } else if (selectedFilter === 'featured') {
-      setFilteredProjects(projects.filter(p => p.featured))
-    } else {
-      setFilteredProjects(projects.filter(p => 
-        p.technologies.some(tech => tech.toLowerCase().includes(selectedFilter.toLowerCase()))
-      ))
-    }
-  }, [projects, selectedFilter])
-
-  const fetchProjects = async () => {
-    try {
-      // First try to fetch from database
-      const { data, error } = await supabase
-        .from('projects')
-        .select('*')
-        .order('created_at', { ascending: false })
-
-      if (error) {
-        console.log('Database not connected, using mock data')
-        // Use mock data if database is not connected
-        setProjects(mockProjects)
-        setFilteredProjects(mockProjects)
-      } else {
-        setProjects(data || [])
-        setFilteredProjects(data || [])
-      }
-    } catch (error) {
-      console.log('Using mock data:', error)
-      setProjects(mockProjects)
-      setFilteredProjects(mockProjects)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const mockProjects: Project[] = [
+const Projects: React.FC = () => {
+  const projects = [
     {
-      id: '1',
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, product catalog, shopping cart, and payment processing.',
-      image_url: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600',
-      demo_url: 'https://example.com',
-      github_url: 'https://github.com',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      featured: true
+      title: "AI Recommendation System",
+      description: "An intelligent recommendation system that analyzes user behavior and preferences to provide personalized suggestions. Built with machine learning algorithms and modern web technologies.",
+      technologies: ["React", "Node.js", "Python", "MongoDB", "TensorFlow"],
+      features: [
+        "Machine learning-based recommendations",
+        "Real-time user behavior analysis",
+        "Scalable architecture",
+        "Interactive dashboard"
+      ],
+      github: "#",
+      demo: "#",
+      icon: <Brain className="h-8 w-8" />,
+      award: "Best Project Award",
+      color: "from-blue-500 to-purple-600"
     },
     {
-      id: '2',
-      title: 'Task Management App',
-      description: 'Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      image_url: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600',
-      demo_url: 'https://example.com',
-      github_url: 'https://github.com',
-      technologies: ['React', 'TypeScript', 'Firebase', 'Tailwind'],
-      featured: true
-    },
-    {
-      id: '3',
-      title: 'Weather Dashboard',
-      description: 'Interactive weather dashboard with location-based forecasts, charts, and weather alerts. Built with modern React and weather APIs.',
-      image_url: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=600',
-      demo_url: 'https://example.com',
-      github_url: 'https://github.com',
-      technologies: ['React', 'Chart.js', 'Weather API', 'CSS'],
-      featured: false
-    },
-    {
-      id: '4',
-      title: 'Social Media Dashboard',
-      description: 'Analytics dashboard for social media management with data visualization, scheduling, and performance tracking.',
-      image_url: 'https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg?auto=compress&cs=tinysrgb&w=600',
-      demo_url: 'https://example.com',
-      github_url: 'https://github.com',
-      technologies: ['Vue.js', 'D3.js', 'Python', 'PostgreSQL'],
-      featured: false
+      title: "Real-Time Chat Application",
+      description: "A modern, responsive chat application with real-time messaging capabilities. Features include group chats, file sharing, and online presence indicators.",
+      technologies: ["React", "Node.js", "Socket.IO", "MongoDB", "Express.js"],
+      features: [
+        "Real-time messaging with Socket.IO",
+        "Group chat functionality",
+        "File sharing capabilities",
+        "Online/offline status",
+        "Message history"
+      ],
+      github: "#",
+      demo: "#",
+      icon: <MessageSquare className="h-8 w-8" />,
+      color: "from-emerald-500 to-teal-600"
     }
-  ]
-
-  const filters = ['all', 'featured', 'react', 'node.js', 'typescript', 'python']
-
-  if (loading) {
-    return (
-      <section id="projects" className="py-20 bg-white dark:bg-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="animate-pulse">
-              <div className="h-8 bg-gray-300 rounded w-64 mx-auto mb-4"></div>
-              <div className="h-4 bg-gray-300 rounded w-96 mx-auto"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-    )
-  }
+  ];
 
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-gray-800">
+    <section id="projects" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <div 
-          ref={ref}
-          className={`transition-all duration-1000 ${
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-              Featured Projects
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              A collection of projects showcasing my skills in web development, 
-              design, and problem-solving.
-            </p>
-          </div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Featured Projects
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400">
+            Some of my notable work and achievements
+          </p>
+        </div>
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setSelectedFilter(filter)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                  selectedFilter === filter
-                    ? 'bg-primary-600 text-white shadow-lg'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                }`}
-              >
-                {filter === 'all' ? 'All Projects' : filter.charAt(0).toUpperCase() + filter.slice(1)}
-              </button>
-            ))}
-          </div>
-
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
-              <div
-                key={project.id}
-                className={`bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-xl ${
-                  inView ? 'animate-slide-up' : ''
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image_url}
-                    alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="flex space-x-4">
-                      <a
-                        href={project.demo_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white rounded-lg hover:bg-gray-100 transition-colors"
-                      >
-                        <ExternalLink className="w-5 h-5 text-gray-700" />
-                      </a>
-                      <a
-                        href={project.github_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white rounded-lg hover:bg-gray-100 transition-colors"
-                      >
-                        <Github className="w-5 h-5 text-gray-700" />
-                      </a>
-                    </div>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              {/* Project Header */}
+              <div className={`bg-gradient-to-r ${project.color} p-6 text-white`}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    {project.icon}
+                    <h3 className="text-2xl font-bold">{project.title}</h3>
                   </div>
+                  {project.award && (
+                    <div className="flex items-center space-x-1 bg-white/20 px-3 py-1 rounded-full">
+                      <Award className="h-4 w-4" />
+                      <span className="text-sm font-medium">{project.award}</span>
+                    </div>
+                  )}
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {project.description}
-                  </p>
+              </div>
+
+              {/* Project Content */}
+              <div className="p-6">
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Technologies */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                    Technologies Used
+                  </h4>
                   <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
+                    {project.technologies.map((tech, techIndex) => (
                       <span
-                        key={tech}
-                        className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
+                        key={techIndex}
+                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
+
+                {/* Features */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                    Key Features
+                  </h4>
+                  <ul className="space-y-2">
+                    {project.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Links */}
+                <div className="flex space-x-4">
+                  <a
+                    href={project.github}
+                    className="flex items-center space-x-2 bg-gray-900 dark:bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200"
+                  >
+                    <Github className="h-5 w-5" />
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href={project.demo}
+                    className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                  >
+                    <ExternalLink className="h-5 w-5" />
+                    <span>Live Demo</span>
+                  </a>
+                </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
+            Want to see more of my work?
+          </p>
+          <a
+            href="https://github.com/indrajit447"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors duration-200"
+          >
+            <Github className="h-5 w-5" />
+            <span>View All Projects on GitHub</span>
+          </a>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Projects;

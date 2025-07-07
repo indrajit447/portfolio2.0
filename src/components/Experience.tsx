@@ -1,185 +1,145 @@
-import { Briefcase, Calendar, MapPin, TrendingUp } from 'lucide-react'
-import { useInView } from 'react-intersection-observer'
+import React from 'react';
+import { Calendar, MapPin, TrendingUp, Users, Code, Database } from 'lucide-react';
 
-export default function Experience() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
+const Experience: React.FC = () => {
   const experiences = [
     {
-      title: 'Web Developer',
-      company: 'Motioncut',
-      location: 'India,Lucknow',
-      period: '2024',
-      type: 'Part-time',
-      description: 'Leading development of scalable web applications serving 100K+ users. Architecting microservices and implementing CI/CD pipelines.',
+      company: "My Job Grow",
+      position: "Full Stack Developer",
+      duration: "Sep 2024 - Present",
+      location: "Remote",
+      type: "Internship",
+      status: "Current",
+      description: "Currently working on developing comprehensive web solutions with modern technologies.",
       achievements: [
-        
+        "Developed responsive user interfaces using React and Tailwind CSS",
+        "Built robust backend APIs using Node.js and MongoDB",
+        "Implemented real-time features with Socket.IO for enhanced user experience",
+        "Led Git-based collaboration workflows for efficient team coordination"
       ],
-      technologies: ['React', 'Tailwindcss', 'Docker', 'PostgreSQL'],
-      logo: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=100'
+      technologies: ["React", "Node.js", "MongoDB", "Socket.IO", "Tailwind CSS", "Git"],
+      icon: <Code className="h-6 w-6" />,
+      color: "from-emerald-500 to-teal-600"
     },
     {
-      title: 'Web Developer',
-      company: 'My Job Grow',
-      location: 'India,Kolkata ',
-      period: '2024',
-      type: 'Full-time',
-      description: 'Designed and impemented dynamic user interfaces using React and Tailwind css,enhancing website responsiveness by 30%',
+      company: "MotionCut",
+      position: "Web Developer",
+      duration: "Aug 2024 - Oct 2024",
+      location: "Remote",
+      type: "Internship",
+      status: "Completed",
+      description: "Focused on building high-performance web applications with emphasis on user experience and performance optimization.",
       achievements: [
-        
+        "Built responsive web applications using React and modern CSS frameworks",
+        "Improved application load time by 20% through optimization techniques",
+        "Successfully resolved 50+ bugs and enhanced application stability",
+        "Collaborated with cross-functional teams to deliver quality solutions"
       ],
-      technologies: ['React', 'Nodejs', 'expressjs', 'Mongodb', 'Vscode'],
-      logo: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=100'
-    },
-    
-  ]
+      technologies: ["React", "JavaScript", "CSS3", "HTML5", "Bootstrap"],
+      icon: <TrendingUp className="h-6 w-6" />,
+      color: "from-blue-500 to-purple-600"
+    }
+  ];
 
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-gray-800">
+    <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
-        <div 
-          ref={ref}
-          className={`transition-all duration-1000 ${
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 rounded-full mb-6">
-              <Briefcase className="w-8 h-8 text-white" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-              Professional Experience
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              A journey through innovative companies where I've contributed to building 
-              cutting-edge solutions and leading development teams.
-            </p>
-          </div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Professional Experience
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400">
+            My journey in the tech industry
+          </p>
+        </div>
 
+        <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 to-blue-600"></div>
-            
-            <div className="space-y-12">
-              {experiences.map((exp, index) => (
-                <div
-                  key={index}
-                  className={`relative pl-20 transform transition-all duration-500 ${
-                    inView ? 'animate-slide-up' : ''
-                  }`}
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-6 w-5 h-5 bg-gradient-to-r from-green-500 to-blue-600 rounded-full border-4 border-white dark:border-gray-800 shadow-lg"></div>
-                  
-                  {/* Experience Card */}
-                  <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-6">
-                      {/* Company Logo */}
-                      <div className="flex-shrink-0 mb-4 lg:mb-0">
-                        <img 
-                          src={exp.logo}
-                          alt={exp.company}
-                          className="w-16 h-16 rounded-xl object-cover shadow-md"
-                        />
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="flex-1">
-                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
-                          <div>
-                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-                              {exp.title}
-                            </h3>
-                            <p className="text-xl font-semibold text-green-600 dark:text-green-400 mb-2">
-                              {exp.company}
-                            </p>
-                          </div>
-                          <div className="flex flex-col lg:items-end">
-                            <span className="inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full text-sm font-medium mb-2">
-                              {exp.type}
-                            </span>
-                            <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                              <Calendar className="w-4 h-4 mr-1" />
-                              {exp.period}
-                            </div>
-                            <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mt-1">
-                              <MapPin className="w-4 h-4 mr-1" />
-                              {exp.location}
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                          {exp.description}
-                        </p>
-                        
-                        {/* Achievements */}
-                        <div className="mb-6">
-                          <h4 className="flex items-center text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                            <TrendingUp className="w-5 h-5 mr-2 text-green-500" />
-                            Key Achievements
-                          </h4>
-                          <div className="grid md:grid-cols-2 gap-2">
-                            {exp.achievements.map((achievement, i) => (
-                              <div key={i} className="flex items-start">
-                                <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                <span className="text-gray-600 dark:text-gray-300 text-sm">
-                                  {achievement}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                        
-                        {/* Technologies */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600"></div>
+
+            {experiences.map((exp, index) => (
+              <div key={index} className="relative mb-12">
+                {/* Timeline Dot */}
+                <div className={`absolute left-6 w-4 h-4 rounded-full bg-gradient-to-r ${exp.color} border-4 border-white dark:border-gray-800`}></div>
+
+                {/* Experience Card */}
+                <div className="ml-20 bg-white dark:bg-gray-900 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className={`bg-gradient-to-r ${exp.color} p-6 rounded-t-lg text-white`}>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        {exp.icon}
                         <div>
-                          <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                            Technologies Used:
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {exp.technologies.map((tech) => (
-                              <span
-                                key={tech}
-                                className="px-3 py-1 bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 text-green-700 dark:text-green-300 rounded-lg text-sm font-medium"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
+                          <h3 className="text-xl font-bold">{exp.position}</h3>
+                          <p className="text-white/90 font-medium">{exp.company}</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                          exp.status === 'Current' 
+                            ? 'bg-green-500 text-white' 
+                            : 'bg-white/20 text-white'
+                        }`}>
+                          {exp.status}
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Career Stats */}
-          <div className="mt-20 grid md:grid-cols-4 gap-6">
-            {[
-              { label: 'Years Experience', value: '1+', icon: '📅' },
-              { label: 'Projects Completed', value: '10+', icon: '🚀' },
-              { label: 'Team Members Led', value: '15+', icon: '👥' },
-              { label: 'Technologies Mastered', value: '10+', icon: '⚡' }
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className={`bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 text-center transform transition-all duration-500 hover:scale-105 ${
-                  inView ? 'animate-scale-in' : ''
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-gray-600 dark:text-gray-300 text-sm">
-                  {stat.label}
+                  <div className="p-6">
+                    {/* Duration and Location */}
+                    <div className="flex flex-wrap gap-4 mb-4">
+                      <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+                        <Calendar className="h-4 w-4" />
+                        <span>{exp.duration}</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+                        <MapPin className="h-4 w-4" />
+                        <span>{exp.location}</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
+                        <Users className="h-4 w-4" />
+                        <span>{exp.type}</span>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                      {exp.description}
+                    </p>
+
+                    {/* Achievements */}
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                        Key Achievements
+                      </h4>
+                      <ul className="space-y-2">
+                        {exp.achievements.map((achievement, achIndex) => (
+                          <li key={achIndex} className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-gray-700 dark:text-gray-300">{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Technologies */}
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                        Technologies Used
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -187,5 +147,7 @@ export default function Experience() {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Experience;
