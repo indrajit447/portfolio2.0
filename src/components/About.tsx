@@ -55,46 +55,48 @@ export default function About() {
   return (
     <section id="about" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="container mx-auto px-4">
-        <div 
+        <div
           ref={ref}
-          className={`transition-all duration-1000 ${
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
         >
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-blue-600 dark:from-white dark:to-blue-400 bg-clip-text text-transparent">
               About Me
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              I'm a passionate developer with expertise in creating modern web applications. 
-              I love turning complex problems into simple, beautiful solutions.
+              👋 I'm a B.Tech CSE graduate from Calcutta Institute of Engineering and Management, passionate about building user-focused and scalable web applications.
+
+              With 8–9 months of internship experience and current work in a tech startup company, I specialize in full-stack development, responsive UI/UX, and SEO.
+
+              I enjoy turning ideas into digital experiences using react,react native, JavaScript, PHP, MySQL, and modern tools.
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl transform rotate-3"></div>
-              <img 
-                src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800"
+              <img
+                src="https://res.cloudinary.com/drfxi4qfn/image/upload/v1751703196/Untitled_design_7_yjd9di.png"
                 alt="Professional workspace"
                 className="relative rounded-2xl shadow-2xl w-full h-96 object-cover transform -rotate-3 hover:rotate-0 transition-transform duration-500"
               />
             </div>
             <div>
-              <h3 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+              <h3 className="text-3xl font-bold mb-12 text-gray-900 dark:text-white">
                 Building Digital Experiences
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                With over 5 years of experience in web development, I specialize in creating 
-                scalable, user-friendly applications that solve real-world problems. I'm passionate 
-                about clean code, modern design, and continuous learning.
+                I’m an enthusiastic and detail-oriented web developer with hands-on experience gained through 8–9 months of internship and my current role in a tech company.
+
+                I specialize in building responsive, user-friendly applications using React, Node.js, Express.js, and MongoDB. I’m also experienced in SEO and passionate about turning ideas into impactful digital experiences. Constant learning and keeping up with modern web development trends are at the core of my growth mindset.
               </p>
               <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, contributing to 
-                open-source projects, or sharing knowledge with the developer community. I believe 
+                When I'm not coding, you'll find me exploring new technologies, contributing to
+                open-source projects, or sharing knowledge with the developer community. I believe
                 in the power of technology to make a positive impact on people's lives.
               </p>
-              
+
               {/* Core Values */}
               <div className="grid grid-cols-1 gap-4">
                 {values.map((value, index) => (
@@ -111,15 +113,14 @@ export default function About() {
               </div>
             </div>
           </div>
-          
+
           {/* Features Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {features.map((feature, index) => (
-              <div 
+              <div
                 key={index}
-                className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl p-8 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
-                  inView ? 'animate-slide-up' : ''
-                }`}
+                className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl p-8 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl ${inView ? 'animate-slide-up' : ''
+                  }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
@@ -143,11 +144,10 @@ export default function About() {
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
               {['React', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker', 'PostgreSQL', 'MongoDB', 'GraphQL', 'Next.js', 'Tailwind CSS', 'Three.js'].map((tech, index) => (
-                <span 
+                <span
                   key={tech}
-                  className={`px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium transform transition-all duration-300 hover:scale-110 hover:shadow-lg ${
-                    inView ? 'animate-fade-in' : ''
-                  }`}
+                  className={`px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium transform transition-all duration-300 hover:scale-110 hover:shadow-lg ${inView ? 'animate-fade-in' : ''
+                    }`}
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   {tech}

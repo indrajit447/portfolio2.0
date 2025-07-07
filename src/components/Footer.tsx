@@ -34,7 +34,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com" 
+                href="https://github.com/indrajit447" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group p-3 rounded-xl bg-gray-800 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110"
@@ -42,7 +42,7 @@ export default function Footer() {
                 <Github className="w-6 h-6 group-hover:text-white transition-colors" />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/indrajit-naskar/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group p-3 rounded-xl bg-gray-800 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110"
@@ -50,7 +50,7 @@ export default function Footer() {
                 <Linkedin className="w-6 h-6 group-hover:text-white transition-colors" />
               </a>
               <a 
-                href="mailto:hello@example.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=naskarindrajit447@gmail.com"
                 className="group p-3 rounded-xl bg-gray-800 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-110"
               >
                 <Mail className="w-6 h-6 group-hover:text-white transition-colors" />
@@ -104,11 +104,11 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <p className="text-gray-400 flex items-center mb-4 md:mb-0">
-              Made with <Heart className="w-4 h-4 text-red-500 mx-2 animate-pulse" /> using React, Three.js, and Tailwind CSS
+              Made by <Heart className="w-4 h-4 text-red-500 mx-2 animate-pulse" /> Indrajit Naskar
             </p>
             <div className="flex items-center space-x-4">
               <p className="text-gray-500">
-                © 2024 Professional Portfolio. All rights reserved.
+                © 2025 Professional Portfolio. All rights reserved.
               </p>
               <button
                 onClick={scrollToTop}

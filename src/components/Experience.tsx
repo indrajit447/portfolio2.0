@@ -9,53 +9,32 @@ export default function Experience() {
 
   const experiences = [
     {
-      title: 'Senior Full Stack Developer',
-      company: 'TechCorp Solutions',
-      location: 'San Francisco, CA',
-      period: '2022 - Present',
-      type: 'Full-time',
+      title: 'Web Developer',
+      company: 'Motioncut',
+      location: 'India,Lucknow',
+      period: '2024',
+      type: 'Part-time',
       description: 'Leading development of scalable web applications serving 100K+ users. Architecting microservices and implementing CI/CD pipelines.',
       achievements: [
-        'Reduced application load time by 40% through optimization',
-        'Led team of 5 developers on major product redesign',
-        'Implemented automated testing reducing bugs by 60%',
-        'Mentored 3 junior developers'
+        
       ],
-      technologies: ['React', 'Node.js', 'AWS', 'Docker', 'PostgreSQL'],
+      technologies: ['React', 'Tailwindcss', 'Docker', 'PostgreSQL'],
       logo: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=100'
     },
     {
-      title: 'Full Stack Developer',
-      company: 'StartupXYZ',
-      location: 'Palo Alto, CA',
-      period: '2021 - 2022',
+      title: 'Web Developer',
+      company: 'My Job Grow',
+      location: 'India,Kolkata ',
+      period: '2024',
       type: 'Full-time',
-      description: 'Developed MVP for fintech startup from ground up. Built responsive web applications and RESTful APIs.',
+      description: 'Designed and impemented dynamic user interfaces using React and Tailwind css,enhancing website responsiveness by 30%',
       achievements: [
-        'Built entire frontend application in React',
-        'Designed and implemented secure payment system',
-        'Achieved 99.9% uptime for production systems',
-        'Integrated with 5+ third-party APIs'
+        
       ],
-      technologies: ['React', 'Python', 'Django', 'Stripe', 'Redis'],
+      technologies: ['React', 'Nodejs', 'expressjs', 'Mongodb', 'Vscode'],
       logo: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=100'
     },
-    {
-      title: 'Frontend Developer Intern',
-      company: 'Digital Agency Pro',
-      location: 'San Jose, CA',
-      period: '2020 - 2021',
-      type: 'Internship',
-      description: 'Collaborated with design team to create pixel-perfect responsive websites for various clients.',
-      achievements: [
-        'Delivered 8 client projects on time',
-        'Improved website performance scores by 35%',
-        'Learned modern development workflows',
-        'Contributed to company\'s design system'
-      ],
-      technologies: ['HTML', 'CSS', 'JavaScript', 'Vue.js', 'Figma'],
-      logo: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=100'
-    }
+    
   ]
 
   return (
@@ -183,10 +162,10 @@ export default function Experience() {
           {/* Career Stats */}
           <div className="mt-20 grid md:grid-cols-4 gap-6">
             {[
-              { label: 'Years Experience', value: '5+', icon: '📅' },
-              { label: 'Projects Completed', value: '50+', icon: '🚀' },
+              { label: 'Years Experience', value: '1+', icon: '📅' },
+              { label: 'Projects Completed', value: '10+', icon: '🚀' },
               { label: 'Team Members Led', value: '15+', icon: '👥' },
-              { label: 'Technologies Mastered', value: '25+', icon: '⚡' }
+              { label: 'Technologies Mastered', value: '10+', icon: '⚡' }
             ].map((stat, index) => (
               <div
                 key={index}

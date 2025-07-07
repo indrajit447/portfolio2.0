@@ -9,59 +9,58 @@ export default function Education() {
 
   const education = [
     {
-      degree: 'Master of Science in Computer Science',
-      school: 'Stanford University',
-      location: 'Stanford, CA',
-      period: '2020 - 2022',
-      gpa: '3.9/4.0',
-      description: 'Specialized in Machine Learning and Distributed Systems. Thesis on "Scalable Real-time Data Processing Architectures".',
-      achievements: [
-        'Dean\'s List for 4 consecutive semesters',
-        'Graduate Research Assistant',
-        'Published 2 papers in ACM conferences'
-      ],
-      image: 'https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=600'
-    },
-    {
-      degree: 'Bachelor of Science in Software Engineering',
-      school: 'University of California, Berkeley',
-      location: 'Berkeley, CA',
-      period: '2016 - 2020',
-      gpa: '3.8/4.0',
+      degree: 'Btech in Computer Science & Engineering',
+      school: 'Makaut University',
+      location: 'Kolkata,India',
+      period: '2020 - 2024',
+      cgpa: '8.6/10.0',
       description: 'Comprehensive study in software development, algorithms, and system design with focus on web technologies.',
       achievements: [
-        'Summa Cum Laude graduate',
-        'President of Computer Science Society',
-        'Winner of Annual Hackathon 2019'
+        'Studied Advanced Software Development Concepts, Data Structure',
+        'Working on personal projects and final year projects ',
+    
       ],
-      image: 'https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=600'
+      image: 'https://res.cloudinary.com/drfxi4qfn/image/upload/v1751716447/1703077207b3d0ae6e217f4921a7126b177858a566_se95in.webp'
+    },
+    {
+      degree: 'High secondary Education in Science',
+      school: 'Bakhrahat High School, Kolkata',
+      location: 'Kolkata, Bakhrahat',
+      period: '2018 - 2019',
+      gpa: '3.8/4.0',
+      description: ' study in Math, Physics, and Chemistry with focus.',
+      achievements: [
+        'Get Highest marks in Math',
+        'Organizer a cultural fest in school'
+      ],
+      image: 'https://res.cloudinary.com/drfxi4qfn/image/upload/v1751717145/sal.339a7dd6dc14ff564205_enfqq8.png'
     }
   ]
 
   const certifications = [
     {
-      name: 'AWS Solutions Architect Professional',
+      name: 'Getting started with aws',
       issuer: 'Amazon Web Services',
       date: '2023',
       icon: '☁️'
     },
     {
-      name: 'Google Cloud Professional Developer',
+      name: 'Google Cloud facilator Program',
       issuer: 'Google Cloud',
       date: '2023',
       icon: '🌐'
     },
     {
-      name: 'Certified Kubernetes Administrator',
-      issuer: 'Cloud Native Computing Foundation',
+      name: 'Cyber security virtual workshop',
+      issuer: 'Forge',
       date: '2022',
-      icon: '⚙️'
+      icon: ' 👨‍💻 '
     },
     {
-      name: 'React Advanced Certification',
+      name: 'Web Development Certificate',
       issuer: 'Meta',
-      date: '2022',
-      icon: '⚛️'
+      date: '2024',
+      icon: ' 💻 '
     }
   ]
 
