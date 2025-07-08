@@ -57,65 +57,65 @@ const Skills: React.FC = () => {
   ];
 
   const proficiencySkills = [
-    { 
-      skill: "React", 
-      level: 90, 
+    {
+      skill: "React",
+      level: 90,
       color: "from-blue-500 to-cyan-500",
       icon: "⚛️",
       category: "Frontend",
       experience: "6+ month"
     },
-    { 
-      skill: "Node.js", 
-      level: 85, 
+    {
+      skill: "Node.js",
+      level: 85,
       color: "from-green-500 to-emerald-500",
       icon: "🟢",
       category: "Backend",
       experience: "6+ month"
     },
-    { 
-      skill: "JavaScript", 
-      level: 95, 
+    {
+      skill: "JavaScript",
+      level: 95,
       color: "from-yellow-500 to-orange-500",
       icon: "🟨",
       category: "Language",
       experience: "1+ years"
     },
-    { 
-      skill: "MongoDB", 
-      level: 80, 
+    {
+      skill: "MongoDB",
+      level: 80,
       color: "from-green-600 to-teal-600",
       icon: "🍃",
       category: "Database",
       experience: "6+ month"
     },
-    { 
-      skill: "Tailwind CSS", 
-      level: 90, 
+    {
+      skill: "Tailwind CSS",
+      level: 90,
       color: "from-cyan-500 to-blue-500",
       icon: "🎨",
       category: "Styling",
       experience: "6+ month"
     },
-    { 
-      skill: "Express.js", 
-      level: 85, 
+    {
+      skill: "Express.js",
+      level: 85,
       color: "from-gray-600 to-gray-800",
       icon: "⚡",
       category: "Framework",
       experience: "3+ months"
     },
-    { 
-      skill: "Git", 
-      level: 88, 
+    {
+      skill: "Git",
+      level: 88,
       color: "from-orange-600 to-red-600",
       icon: "🔧",
       category: "Tool",
       experience: "2+ years"
     },
-    { 
-      skill: "MySQL", 
-      level: 75, 
+    {
+      skill: "MySQL",
+      level: 75,
       color: "from-blue-600 to-indigo-600",
       icon: "🐬",
       category: "Database",
@@ -184,40 +184,57 @@ const Skills: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Enhanced Skills List */}
                     <div className="space-y-4">
-                      {category.skills.map((skill, skillIndex) => (
-                        <div key={skillIndex} className="group/skill bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-4 hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-300 border border-white/30">
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center space-x-3">
-                              <span className="text-xl">{Skills.icon}</span>
-                              <div>
-                                <span className="font-semibold text-gray-900 dark:text-white">{skill.name}</span>
-                                <div className="text-xs text-gray-500 dark:text-gray-400">{skill.experience}</div>
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <div className={`text-lg font-bold bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}>
-                                {skill.level}%
-                              </div>
-                            </div>
+                      {category.skills.map((skill, skillIndex) => {
+                        const isObject = typeof skill === 'object' && skill !== null;
+
+                        return (
+                          <div
+                            key={skillIndex}
+                            className="group/skill bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-4 hover:bg-white/80 dark:hover:bg-gray-800/80 transition-all duration-300 border border-white/30"
+                          >
+                            {isObject ? (
+                              <>
+                                <div className="flex items-center justify-between mb-2">
+                                  <div className="flex items-center space-x-3">
+                                    <span className="text-xl">{skill.icon}</span>
+                                    <div>
+                                      <span className="font-semibold text-gray-900 dark:text-white">{skill.name}</span>
+                                      <div className="text-xs text-gray-500 dark:text-gray-400">{skill.experience}</div>
+                                    </div>
+                                  </div>
+                                  <div className="text-right">
+                                    <div
+                                      className={`text-lg font-bold bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}
+                                    >
+                                      {skill.level}%
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {/* Mini Progress Bar */}
+                                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                                  <div
+                                    className={`h-full bg-gradient-to-r ${category.color} rounded-full transition-all duration-1000 ease-out relative overflow-hidden`}
+                                    style={{ width: `${skill.level}%` }}
+                                  >
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-pulse"></div>
+                                  </div>
+                                </div>
+
+                                <p className="text-xs text-gray-600 dark:text-gray-400">{skill.description}</p>
+                              </>
+                            ) : (
+                              // fallback rendering for string skills
+                              <div className="text-gray-700 dark:text-gray-300 text-sm font-medium">{skill}</div>
+                            )}
                           </div>
-                          
-                          {/* Mini Progress Bar */}
-                          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
-                            <div
-                              className={`h-full bg-gradient-to-r ${category.color} rounded-full transition-all duration-1000 ease-out relative overflow-hidden`}
-                              style={{ width: `${skill.level}%` }}
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-pulse"></div>
-                            </div>
-                          </div>
-                          
-                          <p className="text-xs text-gray-600 dark:text-gray-400">{skill.description}</p>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
+
 
                     {/* Category Stats */}
                     <div className="mt-6 pt-4 border-t border-white/20">
@@ -247,17 +264,22 @@ const Skills: React.FC = () => {
                       {category.title}
                     </h3>
                   </div>
-                  
+
                   <div className="space-y-3">
-                    {category.skills.map((skill, skillIndex) => (
-                      <div
-                        key={skillIndex}
-                        className="flex items-center space-x-3 text-gray-700 dark:text-gray-300 group/item hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
-                      >
-                        <div className={`w-3 h-3 ${category.color} rounded-full group-hover/item:scale-125 transition-transform duration-200`}></div>
-                        <span className="font-medium">{skill}</span>
-                      </div>
-                    ))}
+                    {category.skills.map((skill, skillIndex) => {
+                      const skillName = typeof skill === "string" ? skill : skill.name;
+
+                      return (
+                        <div
+                          key={skillIndex}
+                          className="flex items-center space-x-3 text-gray-700 dark:text-gray-300 group/item hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                        >
+                          <div className={`w-3 h-3 ${category.color} rounded-full group-hover/item:scale-125 transition-transform duration-200`}></div>
+                          <span className="font-medium">{skillName}</span>
+                        </div>
+                      );
+                    })}
+
                   </div>
                 </div>
               )}
@@ -279,7 +301,7 @@ const Skills: React.FC = () => {
               Real-time assessment of my technical capabilities and experience
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {proficiencySkills.map((item, index) => (
               <div key={index} className="group bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
@@ -304,9 +326,9 @@ const Skills: React.FC = () => {
                     </div>
                     <div className="flex items-center space-x-1 mt-1">
                       {[...Array(5)].map((_, starIndex) => (
-                        <Star 
-                          key={starIndex} 
-                          className={`h-3 w-3 ${starIndex < Math.floor(item.level / 20) ? 'text-yellow-400 fill-current' : 'text-gray-300'} transition-colors duration-200`} 
+                        <Star
+                          key={starIndex}
+                          className={`h-3 w-3 ${starIndex < Math.floor(item.level / 20) ? 'text-yellow-400 fill-current' : 'text-gray-300'} transition-colors duration-200`}
                         />
                       ))}
                     </div>
@@ -324,9 +346,9 @@ const Skills: React.FC = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-pulse"></div>
                     </div>
                   </div>
-                  
+
                   {/* Percentage Indicator */}
-                  <div 
+                  <div
                     className="absolute top-0 transform -translate-y-8 transition-all duration-1000"
                     style={{ left: `${item.level}%`, transform: `translateX(-50%) translateY(-2rem)` }}
                   >
@@ -341,9 +363,9 @@ const Skills: React.FC = () => {
                   <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gradient-to-r ${item.color} text-white text-xs font-semibold shadow-lg`}>
                     <Award className="h-3 w-3" />
                     <span>
-                      {item.level >= 90 ? 'Expert' : 
-                       item.level >= 80 ? 'Advanced' : 
-                       item.level >= 70 ? 'Intermediate' : 'Beginner'}
+                      {item.level >= 90 ? 'Expert' :
+                        item.level >= 80 ? 'Advanced' :
+                          item.level >= 70 ? 'Intermediate' : 'Beginner'}
                     </span>
                   </div>
                   <div className="text-xs text-gray-500 dark:text-gray-400 font-medium">
@@ -359,21 +381,21 @@ const Skills: React.FC = () => {
         <div className="mt-20 max-w-5xl mx-auto">
           <div className="grid md:grid-cols-4 gap-6">
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-3 border border-white/20 group">
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">8+</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">5+</div>
               <div className="text-gray-600 dark:text-gray-400 font-medium">Technologies</div>
               <div className="mt-2">
                 <Code className="h-5 w-5 text-blue-500 mx-auto" />
               </div>
             </div>
-            
+
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-3 border border-white/20 group">
-              <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">3+</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">1+</div>
               <div className="text-gray-600 dark:text-gray-400 font-medium">Years Experience</div>
               <div className="mt-2">
                 <TrendingUp className="h-5 w-5 text-emerald-500 mx-auto" />
               </div>
             </div>
-            
+
             <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-3 border border-white/20 group">
               <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">95%</div>
               <div className="text-gray-600 dark:text-gray-400 font-medium">JS Proficiency</div>
